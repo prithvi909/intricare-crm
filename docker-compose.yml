@@ -10,6 +10,11 @@ services:
       - ./:/var/www/html
       - /var/www/html/vendor
       - /var/www/html/node_modules
+    command: >
+      sh -c "
+        php artisan migrate --force &&
+        php-fpm
+      "
     networks:
       - intricare-network
 

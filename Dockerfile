@@ -46,8 +46,9 @@ RUN chown -R www-data:www-data /var/www/html \
     && chmod -R 755 /var/www/html/storage \
     && chmod -R 755 /var/www/html/bootstrap/cache
 
-# Generate application key
+# Generate application key and run migrations
 RUN php artisan key:generate
+RUN php artisan migrate --force
 
 # Expose port 9000 for PHP-FPM
 EXPOSE 9000
